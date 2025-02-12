@@ -35,6 +35,7 @@
 
             <Label Content="Фильтр" VerticalAlignment="Center"/>
             <ComboBox x:Name="FiltrCb" SelectionChanged="FiltrCb_SelectionChanged">
+                <ComboBoxItem Content="Все"/>
                 <ComboBoxItem Content="Активные"/>
                 <ComboBoxItem Content="Завершённые"/>
                 <ComboBoxItem Content="Отменённые"/>
@@ -45,7 +46,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
             <Button x:Name="AddBtn"  Content="Добавить" Click="AddBtn_Click"/>
-            <Button x:Name="EditBtn"   Content="Изменить" Click="EditBtn_Click"/>
+            <Button x:Name="EditBtn"   Content="Изменить" Click="EditBtn_Click_1"/>
             <Button x:Name="DeleteBtn"  Content="Удалить" Background="Red" Click="DeleteBtn_Click"/>
         </StackPanel>
 

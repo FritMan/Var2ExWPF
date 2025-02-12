@@ -33,6 +33,7 @@ namespace Var2ExWpf.Pages
         {
             bookingDataGrid.ItemsSource = Db.Booking.ToList();
             SearchCb.SelectedIndex = 0;
+            FiltrCb.SelectedIndex = 0;
             SeacrhDate.SelectedDate = DateTime.Now;
             SeacrhDate.IsEnabled = false;
         }
@@ -42,15 +43,6 @@ namespace Var2ExWpf.Pages
             NavigationService.Navigate(new EditBooking(-1));
         }
 
-        private void EditBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var selected_booking = bookingDataGrid.DataContext as Booking;
-
-            if (selected_booking != null) 
-            {
-                NavigationService.Navigate(new EditBooking(selected_booking.Id));
-            }
-        }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -85,13 +77,17 @@ namespace Var2ExWpf.Pages
         {
             if(FiltrCb.SelectedIndex == 0)
             {
+                LoadData();
+            }
+            else if(FiltrCb.SelectedIndex == 1)
+            {
                 bookingDataGrid.ItemsSource = Db.Booking.Where(el => el.Status_Booking.Name == "Активное").ToList();
             }
-            else if((FiltrCb.SelectedIndex == 1))
+            else if(FiltrCb.SelectedIndex == 2)
             {
                 bookingDataGrid.ItemsSource = Db.Booking.Where(el => el.Status_Booking.Name == "Завершено").ToList();
             }
-            else if (FiltrCb.SelectedIndex == 2)
+            else if (FiltrCb.SelectedIndex ==3)
             {
                 bookingDataGrid.ItemsSource = Db.Booking.Where(el => el.Status_Booking.Name == "Отмененено").ToList();
             }
@@ -117,6 +113,16 @@ namespace Var2ExWpf.Pages
                 SearchTb.IsEnabled = false;
                 Help.ShowInfo("Выберите в календаре дату для поиска");
                 SeacrhDate.IsEnabled = true;
+            }
+        }
+
+        private void EditBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+            var selected_booking = bookingDataGrid.SelectedItem as Booking;
+
+            if (selected_booking != null)
+            {
+                NavigationService.Navigate(new EditBooking(selected_booking.Id));
             }
         }
     }
