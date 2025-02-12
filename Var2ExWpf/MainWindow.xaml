@@ -1,0 +1,25 @@
+﻿<Window x:Class="Var2ExWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Var2ExWpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="BackBtn" Content="Назад" Click="BackBtn_Click" Grid.Row="0" Grid.Column="2"/>
+
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.ColumnSpan="3" Source="Pages/DataBooking.xaml"/>
+    </Grid>
+</Window>
