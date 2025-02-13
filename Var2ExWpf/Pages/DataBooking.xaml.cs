@@ -34,8 +34,9 @@ namespace Var2ExWpf.Pages
             bookingDataGrid.ItemsSource = Db.Booking.ToList();
             SearchCb.SelectedIndex = 0;
             FiltrCb.SelectedIndex = 0;
-            SeacrhDate.SelectedDate = DateTime.Now;
+            SearchTb.IsEnabled = true;
             SeacrhDate.IsEnabled = false;
+            SeacrhDate.SelectedDate = DateTime.Now;
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -87,7 +88,7 @@ namespace Var2ExWpf.Pages
             {
                 bookingDataGrid.ItemsSource = Db.Booking.Where(el => el.Status_Booking.Name == "Завершено").ToList();
             }
-            else if (FiltrCb.SelectedIndex ==3)
+            else if (FiltrCb.SelectedIndex == 3)
             {
                 bookingDataGrid.ItemsSource = Db.Booking.Where(el => el.Status_Booking.Name == "Отмененено").ToList();
             }
@@ -107,6 +108,16 @@ namespace Var2ExWpf.Pages
             if(SearchCb.SelectedIndex == 0)
             {
                 LoadData();
+            }
+            if (SearchCb.SelectedIndex == 1)
+            {
+                SearchTb.IsEnabled = true;
+                SeacrhDate.IsEnabled = false;
+            }
+            else if (SearchCb.SelectedIndex == 2)
+            {
+                SearchTb.IsEnabled = true;
+                SeacrhDate.IsEnabled = false;
             }
             else if (SearchCb.SelectedIndex == 3) 
             {
